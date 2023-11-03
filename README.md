@@ -1,5 +1,7 @@
 # tunnel
 
+*Note that the state of this library is experimental*.
+
 `tunnel` is a very simple library that allows you to create multi-hop SSH tunnels. From the endpoint
 of the tunnel you can then `Dial()` to create network connections, or you can `Listen()` for
 incoming connections.
@@ -11,7 +13,15 @@ You can create multiple connections through the same tunnel.
 
 ## Typical use
 
-Creating the tunnel
+### Import
+
+Add the folliwing import and run `go mod tidy` to add tunnel to your project.
+
+```go
+import "github.com/borud/tunnel"
+```
+
+### Creating the tunnel
 
 ```go
 tunnel, err := tunnel.Create(tunnel.Config{
@@ -22,7 +32,9 @@ tunnel, err := tunnel.Create(tunnel.Config{
 })
 ```
 
-Then we connect using the tunnel
+### Dial
+
+You can `Dial` to create a new connection over the tunnel like so:
 
 ```go
   conn, err := tunnel.Dial("tcp", "service.example.com:4711")
@@ -31,6 +43,8 @@ Then we connect using the tunnel
 If everything went according to plan you now have a tunnel that terminates at
 inside.example.com (since it is the last hop) and connects from there to port
 4711 on service.example.com
+
+### Listen
 
 You can also listen on the remote endpoint.
 
