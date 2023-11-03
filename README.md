@@ -1,5 +1,7 @@
 # tunnel
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/borud/tunnel.svg)](https://pkg.go.dev/github.com/borud/tunnel)
+
 *Note that the state of this library is experimental*.
 
 `tunnel` is a very simple library that allows you to create multi-hop SSH tunnels. From the endpoint
