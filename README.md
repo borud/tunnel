@@ -6,6 +6,9 @@
 of the tunnel you can then `Dial()` to create network connections, or you can `Listen()` for
 incoming connections.
 
+This library uses the `ssh-agent` to load any keys you might need. If you need to load keys from
+files, let me know and I'll probably add support for it.
+
 You are responsible for closing any connections or listeners you make. The tunnel doesn't keep track
 of any connections you might have opened.
 
