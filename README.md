@@ -9,6 +9,35 @@ of any connections you might have opened.
 
 You can create multiple connections through the same tunnel.
 
+## Typical use
+
+Creating the tunnel
+
+```go
+tunnel, err := tunnel.Create(tunnel.Config{
+    Hops: []string{
+        "bob@bastion.example.com:22",
+        "alice@inside.example.com:22",
+    },
+})
+```
+
+Then we connect using the tunnel
+
+```go
+  conn, err := tunnel.Dial("tcp", "service.example.com:4711")
+```
+
+If everything went according to plan you now have a tunnel that terminates at
+inside.example.com (since it is the last hop) and connects from there to port
+4711 on service.example.com
+
+You can also listen on the remote endpoint.
+
+```go
+listener, err := tunnel.Listen("tcp", ":80")
+```
+
 ## A note on Listen ports
 
 When you want to `Listen` to remote ports that should be externally available, you have to make sure
