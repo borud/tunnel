@@ -2,8 +2,6 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/borud/tunnel.svg)](https://pkg.go.dev/github.com/borud/tunnel)
 
-*Note that this library is experimental*.
-
 `tunnel` is a very simple library that allows you to create multi-hop SSH tunnels. From the endpoint
 of the tunnel you can then `Dial()` to create network connections, or you can `Listen()` for
 incoming connections.
@@ -20,7 +18,7 @@ You can create multiple connections through the same tunnel.
 
 ### Import
 
-Add the folliwing import and run `go mod tidy` to add tunnel to your project.
+Add the following import and run `go mod tidy` to add tunnel to your project.
 
 ```go
 import "github.com/borud/tunnel"
