@@ -8,7 +8,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-func TestCreate_NoHops(t *testing.T) {
+func TestCreateNoHops(t *testing.T) {
 	_, err := Create(
 		// No hops at all
 		WithAgent(), // auth present, but should still fail due to no hops
@@ -21,7 +21,7 @@ func TestCreate_NoHops(t *testing.T) {
 	}
 }
 
-func TestCreate_NoAuth(t *testing.T) {
+func TestCreateNoAuth(t *testing.T) {
 	_, err := Create(
 		WithHop("alice@host:22"),
 		// no signer, no agent
@@ -34,7 +34,7 @@ func TestCreate_NoAuth(t *testing.T) {
 	}
 }
 
-func TestCreate_WithAgentOnly_Succeeds(t *testing.T) {
+func TestCreateWithAgentOnlySucceeds(t *testing.T) {
 	// WithAgent() is explicit; Create should succeed even if SSH_AUTH_SOCK
 	// is not set — dialing isn't attempted until ensureChain().
 	_, err := Create(
@@ -46,7 +46,7 @@ func TestCreate_WithAgentOnly_Succeeds(t *testing.T) {
 	}
 }
 
-func TestCreate_WithSigner_Succeeds(t *testing.T) {
+func TestCreateWithSignerSucceeds(t *testing.T) {
 	// Generate an in-memory ed25519 key and wrap as ssh.Signer
 	_, priv, err := ed25519.GenerateKey(rand.Reader)
 	if err != nil {
